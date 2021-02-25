@@ -1,0 +1,33 @@
+buildscript {
+    // springBootVersion 전역변수 생성 후 '2.1.9.RELEASE'  할당
+    // spring-boot-gradle-plugin의 2.1.9.RELEASE를 의존성으로 받겠다는 뜻
+    ext {
+        springBootVersion = '2.1.9.RELEASE'
+    }
+
+// io.spring.dependency-management: 스프링 부트의 의존성들을 관리해주는 플러그인
+//repositories: 의존성 라이브러리들을 어떤 원격 저장소에서 받을지 결정한다.
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
